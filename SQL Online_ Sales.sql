@@ -1,0 +1,22 @@
+create database Online_Sales
+
+use Online_Sales
+
+select * from orders
+
+SELECT
+    YEAR(ORDER_DATE) AS ORDER_YEAR,
+    MONTH(ORDER_DATE) AS ORDER_MONTH,
+    PRODUCT_ID,
+    COUNT(DISTINCT ORDER_ID) AS TOTAL_VOLUME,
+    SUM(AMOUNT) AS TOTAL_REVENUE
+FROM orders
+GROUP BY
+    YEAR(ORDER_DATE),
+    MONTH(ORDER_DATE),
+    PRODUCT_ID
+ORDER BY
+    ORDER_YEAR,
+    ORDER_MONTH,
+    PRODUCT_ID
+	
